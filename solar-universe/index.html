@@ -301,7 +301,7 @@ b.hc{color:var(--photon);font-weight:700}
 .s5-foot .src{font-weight:500;color:var(--muted)}
 
 /* ===== 6 · market ===== */
-.s6-grid{flex:1;display:grid;grid-template-columns:590px 1fr;grid-template-rows:minmax(0,1fr);gap:20px;min-height:0}
+.s6-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr);gap:20px;min-height:0}
 .s6-grid > .panel{padding:16px 20px;display:flex;flex-direction:column;gap:10px;min-height:0}
 .news{margin:0;padding:0;list-style:none;display:grid;gap:4px}
 .news li{display:flex;gap:10px;font-size:16px;line-height:1.45;align-items:baseline}
@@ -346,7 +346,7 @@ b.hc{color:var(--photon);font-weight:700}
 @keyframes tileIn{from{opacity:0;transform:perspective(600px) rotateY(-90deg)}}
 
 /* ===== 7 · idea ===== */
-.idea{flex:1;display:grid;grid-template-columns:1fr 470px 1fr;gap:24px;min-height:0;padding:18px 24px;border-radius:22px;background:linear-gradient(180deg,#0a1636,#07102a);border:1px solid #1d2d5c}
+.idea{flex:1;display:grid;grid-template-columns:1fr 400px 1fr;gap:24px;min-height:0;padding:18px 24px;border-radius:22px;background:linear-gradient(180deg,#0a1636,#07102a);border:1px solid #1d2d5c}
 .col{display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:16px;background:linear-gradient(180deg,rgba(40,58,108,.45),rgba(20,32,70,.55));border:1px solid #2a3c74;min-height:0}
 .col h3{margin:0 0 4px;text-align:center;font-size:34px;font-weight:700;color:#ffcf6e;letter-spacing:.06em;text-shadow:0 0 20px rgba(246,183,60,.5)}
 .item{display:flex;align-items:center;gap:16px;padding:10px 12px;border-radius:12px;background:rgba(5,9,20,.35);transition:background .3s,transform .3s}
@@ -399,6 +399,47 @@ b.hc{color:var(--photon);font-weight:700}
 .on .cmp div{animation:rise .7s ease both 2s}
 .on .cmp .new{animation:pop .7s cubic-bezier(.16,.84,.24,1) both 2.3s,glowGold 2.4s ease-in-out infinite 3s}
 @keyframes glowGold{50%{box-shadow:0 0 44px rgba(246,183,60,.75)}}
+
+
+/* ===== 5 · original infographic with motion overlays ===== */
+.s-outlook{padding:0;background:#fff}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.ofull{position:absolute;inset:0;overflow:hidden}
+.oimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+.on .oimg{animation:oIn 1.3s cubic-bezier(.16,.84,.24,1) both .2s}
+@keyframes oIn{from{opacity:0;transform:scale(1.12);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.osweep{position:absolute;top:0;bottom:0;left:0;width:22%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.65),transparent);transform:translateX(-120%) skewX(-18deg);pointer-events:none}
+.on .osweep{animation:sweepO 1.6s ease-in-out 1.3s both}
+@keyframes sweepO{to{transform:translateX(560%) skewX(-18deg)}}
+.spot{position:absolute;border-radius:18px;pointer-events:none;opacity:0;box-shadow:0 0 0 3px rgba(246,183,60,.95),0 0 40px 6px rgba(246,183,60,.55),0 0 0 2000px rgba(5,9,20,.38);transition:left .8s cubic-bezier(.65,0,.35,1),top .8s cubic-bezier(.65,0,.35,1),width .8s,height .8s,opacity .5s}
+.spot.show{opacity:1}
+.hot{position:absolute;border:0;border-radius:16px;background:transparent;cursor:zoom-in;padding:0}
+.hot:focus-visible{outline:3px solid var(--photon);outline-offset:2px}
+.lightbox .quad{width:min(1400px,94vw);max-width:100%;background-repeat:no-repeat}
+
+/* ===== 6 · original figure groups ===== */
+.s6p{padding:18px 22px;display:flex;flex-direction:column;gap:10px;min-height:0}
+.mat{background:#eef3fa;min-height:0;box-shadow:0 10px 30px -12px rgba(0,0,0,.7)}
+.mat img{object-fit:contain}
+.wipe{clip-path:inset(0 0 0 0)}
+.on .wipe{animation:wipeIn 1.1s cubic-bezier(.65,0,.35,1) both;animation-delay:calc(var(--d,0) * 110ms + 350ms)}
+@keyframes wipeIn{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.on .wipe img{animation:settle 1.6s cubic-bezier(.16,.84,.24,1) both;animation-delay:calc(var(--d,0) * 110ms + 350ms)}
+@keyframes settle{from{transform:scale(1.12)}to{transform:none}}
+
+/* ===== 7 · original centre illustration ===== */
+.center7{position:relative;border-radius:16px;overflow:hidden;min-height:0}
+.tfig{position:absolute;inset:0;border-radius:16px;background:#0b1636}
+.tfig img{object-fit:contain}
+.on .tfig img{animation:tIn 1.4s cubic-bezier(.16,.84,.24,1) both .5s,breathe 6s ease-in-out infinite 2s}
+@keyframes tIn{from{opacity:0;transform:translateY(40px) scale(.9);filter:brightness(2) blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes breathe{50%{transform:scale(1.025)}}
+.beam{position:absolute;top:-30%;width:3px;height:26%;background:linear-gradient(transparent,#ffe08a);filter:drop-shadow(0 0 6px #ffcf6e);pointer-events:none;opacity:0}
+.on .beam{animation:beam 2.4s linear infinite;animation-delay:calc(var(--bd) + 1.6s)}
+@keyframes beam{0%{top:-26%;opacity:0}15%{opacity:.95}100%{top:48%;opacity:0}}
+.halo7{position:absolute;inset:0;border-radius:16px;pointer-events:none;box-shadow:inset 0 0 0 2px rgba(246,183,60,.0)}
+.on .halo7{animation:halo7 3s ease-in-out infinite 2s}
+@keyframes halo7{50%{box-shadow:inset 0 0 0 2px rgba(246,183,60,.7),inset 0 0 50px rgba(246,183,60,.25)}}
 
 /* ===== 8 · strategy ===== */
 .s8-grid{flex:1;display:grid;grid-template-columns:1fr 1.02fr;grid-template-rows:minmax(0,1fr);gap:24px;min-height:0}
@@ -536,7 +577,9 @@ body.idle{cursor:none}
   .hub .photo{height:200px}.hub svg.wires{display:none}
   .eq{grid-template-columns:repeat(4,1fr)}
   .nc{min-height:230px}
-  .idea{padding:12px}.tdm{height:620px;flex:none}
+  .idea{padding:12px}.center7{height:640px}
+  .s-outlook .ofull{position:relative;aspect-ratio:1669/937;max-width:100%}.s-outlook{padding:20px 0 100px}
+  .mat{flex:none!important}
   .stress{grid-template-rows:none}.srow{grid-template-columns:56px 1fr}.srow .lbl{font-size:18px}.srow svg{height:auto}
   .strat{grid-template-columns:70px 170px 1fr;min-height:420px}
   .road{grid-template-columns:1fr;grid-template-rows:none;gap:12px;flex:none}
@@ -761,124 +804,53 @@ body.idle{cursor:none}
   <span class="pg">4/10</span>
 </section>
 
-<!-- 5 · outlook — rebuilt from the infographic -->
-<section class="slide" data-title="2. 우주 태양전지 전망 · 왜 지금 우리는 우주 태양전지에 도전해야하는가?" aria-label="5 / 10">
-  <div class="s5-head rv left" style="--d:0">
-    <span class="slash" aria-hidden="true"></span><h2>2. 우주 태양전지 전망</h2>
-    <div class="brand">S<span class="o">O</span>LAR<small>UNIVERSE</small></div>
+<!-- 5 · outlook — the original infographic, unaltered -->
+<section class="slide s-outlook" data-title="2. 우주 태양전지 전망 · 왜 지금 우리는 우주 태양전지에 도전해야하는가?" aria-label="5 / 10">
+  <h2 class="vh">2. 우주 태양전지 전망</h2>
+  <p class="vh">왜 지금 우리는 우주 태양전지에 도전해야하는가?</p>
+  <div class="ofull">
+    <img class="oimg" src="assets/s5-outlook.webp" alt="2. 우주 태양전지 전망 — 왜 지금 우리는 우주 태양전지에 도전해야 하는가? 01 글로벌 우주 진입 장벽 완화 &amp; 수요 확대: 우주 접근성 확대, 위성 전력 수요 증가. 02 차세대 탠덤 기술의 부상: 기술 경쟁 본격화, 선점의 중요성. 03 핵심 부품 국산화와 기술 자립: 해외 의존 완화, 공급망 리스크 대응. 04 대한민국 제조기술의 우주 확장: 지상에서 우주로 확장, 파생 응용 가능성. 출처: ESA, NASA, KASA, 자사 사업화 로드맵">
+    <span class="osweep" aria-hidden="true"></span>
+    <span class="spot" id="spot" aria-hidden="true"></span>
+    <button type="button" class="hot" data-q="0" style="left:2.2%;top:20.6%;width:47.2%;height:34.4%;--d:0" aria-label="01 글로벌 우주 진입 장벽 완화 &amp; 수요 확대 확대 보기"></button>
+    <button type="button" class="hot" data-q="1" style="left:50.5%;top:20.6%;width:47.2%;height:34.4%;--d:1" aria-label="02 차세대 탠덤 기술의 부상 확대 보기"></button>
+    <button type="button" class="hot" data-q="2" style="left:2.2%;top:57.2%;width:47.2%;height:35%;--d:2" aria-label="03 핵심 부품 국산화와 기술 자립 확대 보기"></button>
+    <button type="button" class="hot" data-q="3" style="left:50.5%;top:57.2%;width:47.2%;height:35%;--d:3" aria-label="04 대한민국 제조기술의 우주 확장 확대 보기"></button>
   </div>
-  <p class="sub rv left" style="--d:1">왜 지금 우리는 우주 태양전지에 도전해야하는가?</p>
-  <div class="quad">
-    <article class="q rv pop" style="--d:2">
-      <div class="ribbon"><span class="no">01</span><span class="tt">글로벌 우주 진입 장벽 완화 &amp; 수요 확대</span></div>
-      <div class="qbody">
-        <div class="illo"><img src="assets/s5-i1.webp" alt="로켓과 지구, 위성 일러스트"></div>
-        <div class="points">
-          <div class="pt" style="--e:0"><h4>우주 접근성 확대</h4><p>재사용 발사체와 공유 발사<br>서비스 확산</p></div>
-          <div class="pt" style="--e:1"><h4>위성 전력 수요 증가</h4><p>위성 증가와 임무 고도화로<br>전력 부품 중요성 확대</p></div>
-        </div>
-      </div>
-    </article>
-    <article class="q rv pop" style="--d:3">
-      <div class="ribbon"><span class="no">02</span><span class="tt">차세대 탠덤 기술의 부상</span></div>
-      <div class="qbody">
-        <div class="illo"><div class="stack2" aria-label="Perovskite / Silicon 탠덤 구조">
-          <div class="blk cell"></div><div class="blk pk">Perovskite</div><div class="blk sl">Silicon</div>
-          <div class="brk2"><span>탠덤 구조</span></div>
-        </div></div>
-        <div class="points">
-          <div class="pt" style="--e:0"><h4>기술 경쟁 본격화</h4><p>기존 우주용 기술과 함께<br>새로운 대안 부상</p></div>
-          <div class="pt" style="--e:1"><h4>선점의 중요성</h4><p>우주환경 실증과 특허 확보가<br>미래 경쟁력 좌우</p></div>
-        </div>
-      </div>
-    </article>
-    <article class="q rv pop" style="--d:4">
-      <div class="ribbon"><span class="no">03</span><span class="tt">핵심 부품 국산화와 기술 자립</span></div>
-      <div class="qbody">
-        <div class="illo"><img src="assets/s5-i3.webp" alt="위성과 태극 방패 일러스트" style="max-height:78%;margin-bottom:40px"><span class="badge-kr">국내 기술<br>기반 확보</span></div>
-        <div class="points">
-          <div class="pt" style="--e:0"><h4>해외 의존 완화</h4><p>핵심 우주 전력 부품의<br>국내 기술 기반 확보 필요</p></div>
-          <div class="pt" style="--e:1"><h4>공급망 리스크 대응</h4><p>수출통제와 조달 불확실성에<br>대응하는 전략적 기술 자립</p></div>
-        </div>
-      </div>
-    </article>
-    <article class="q rv pop" style="--d:5">
-      <div class="ribbon"><span class="no">04</span><span class="tt">대한민국 제조기술의 우주 확장</span></div>
-      <div class="qbody">
-        <div class="illo"><img src="assets/s5-i4.webp" alt="공장, 반도체 칩, 항공기 일러스트"></div>
-        <div class="points">
-          <div class="pt" style="--e:0"><h4>지상에서 우주로 확장</h4><p>실리콘·박막·반도체 공정기술의<br>우주산업 적용</p></div>
-          <div class="pt" style="--e:1"><h4>파생 응용 가능성</h4><p>극한환경 소재·소자 기술의<br>지상 응용 시장 확대 기대</p></div>
-        </div>
-      </div>
-    </article>
-  </div>
-  <div class="s5-foot rv" style="--d:8"><span>SOLAR UNIVERSE</span><i></i><span class="src">출처: ESA, NASA, KASA, 자사 사업화 로드맵</span><i></i><span>SOLAR UNIVERSE</span></div>
 </section>
 
-<!-- 6 · market -->
+<!-- 6 · market — original figure groups from the slide -->
 <section class="slide" data-title="2. 우주 태양전지 전망 · 시장 전망 및 실현 가능성" aria-label="6 / 10">
   <header class="hd rv left" style="--d:0"><span class="orb" aria-hidden="true"></span><h2>2. 우주 태양전지 전망</h2><span class="rule"></span></header>
   <p class="sub rv left" style="--d:1">시장 전망 및 실현 가능성</p>
   <div class="s6-grid">
-    <div class="panel rv left" style="--d:2">
+    <div class="panel s6p rv left" style="--d:2">
       <p class="ptitle">우주용 태양전지 시장 전망</p>
       <ul class="news">
         <li><span class="flag">美</span><span>美) 테슬라 社, 태양광 모듈 <b class="hl">100GW</b> 양산 확보 계획 (’29, <b class="hl">14조원</b> 규모)</span></li>
         <li><span class="flag">美</span><span>美) Space X 社, 스타링크 V3 활용 궤도 데이터센터 구축 계획</span></li>
       </ul>
-      <div class="feed">
-        <article class="nc text-only rv flip" style="--d:4">
-          <div class="big"><span class="num" data-to="100">100</span>GW</div>
-          <div class="tx"><span class="hl2">테슬라, 美 태양전지 생산 100GW 목표...뉴욕·애리조나·아이다호 공장 검토</span></div>
-        </article>
-        <article class="nc rv flip" style="--d:5">
-          <figure class="th photo" tabindex="0" data-zoom="assets/starlink.webp" data-cap="자료: SpaceX"><img src="assets/starlink.webp" alt="스타링크 V1.5, V2, V3 위성"><span class="tag">자료: SpaceX</span></figure>
-          <div class="tx"><span class="src"><b>서울경제</b> 김기혁 기자 · 2026-06-13 14:00</span><span class="hl2">스페이스X, 우주 AIDC 속도...태양전지 확보 주력</span></div>
-        </article>
-      </div>
+      <figure class="photo mat wipe shine" style="--d:4;flex:1.75" tabindex="0" data-zoom="assets/s6-market-a.webp" data-cap="미국 태양광·스페이스X 관련 기사 (자료: SpaceX)"><img src="assets/s6-market-a.webp" alt="스타링크 V1.5·V2·V3 위성 이미지와 테슬라·스페이스X 태양전지 관련 기사"></figure>
       <ul class="news">
         <li><span class="flag">韓</span><span>韓) 플렉셀스페이스 社, 우주용 태양광 시리즈A 투자유치 (‘26.07 <b class="hl">250억</b>)</span></li>
         <li><span class="flag">中</span><span>中) JA Solar 社, p-type HJT 태양광 모듈 우주 환경 실증 (’26.09)</span></li>
       </ul>
-      <div class="feed">
-        <article class="nc rv flip" style="--d:7">
-          <figure class="th photo" tabindex="0" data-zoom="assets/blueshell.webp" data-cap="BLUESHELL"><img src="assets/blueshell.webp" alt="플렉셀스페이스 BLUESHELL 모듈"></figure>
-          <div class="tx"><span class="hl2">플렉셀스페이스, 시리즈A 250억 투자 유치…우주태양전지 상용화 속도</span></div>
-        </article>
-        <article class="nc rv flip" style="--d:8">
-          <figure class="th photo" tabindex="0" data-zoom="assets/hjt.webp" data-cap="P-Type HJT Modules Head To Orbit In First In-Space Test"><img src="assets/hjt.webp" alt="로켓 발사와 궤도 위 태양광 모듈"><span class="ov">P-Type HJT Modules<em>Head To Orbit In First In-Space Test</em></span></figure>
-          <div class="tx"><span class="src"><span class="hn">HEADLINE NEWS</span> GBA · October 6, 2026</span><span class="hl2">JA Solar P HJT modules enter orbit for space validation</span></div>
-        </article>
-      </div>
+      <figure class="photo mat wipe shine" style="--d:7;flex:1" tabindex="0" data-zoom="assets/s6-market-b.webp" data-cap="플렉셀스페이스·JA Solar 관련 기사"><img src="assets/s6-market-b.webp" alt="플렉셀스페이스 시리즈A 투자 유치 및 JA Solar P-type HJT 모듈 우주 실증 기사"></figure>
     </div>
-    <div class="panel rv right" style="--d:3">
+    <div class="panel s6p rv right" style="--d:3">
       <p class="ptitle">창업 실현 가능성</p>
-      <ul class="dots" style="font-size:16px">
+      <ul class="dots" style="font-size:17px">
         <li>이해석 교수 Lab. 보유 인프라 활용, 초기 R&amp;D 비용 최소화</li>
         <li>실리콘/페로브스카이트 태양전지 제작 공정 및 분석 장비 활용<br><b class="hc"><span class="num" data-to="150">150</span>m<sup>2</sup></b> 규모, 공정장비 (<b class="hl"><span class="num" data-to="11">11</span>종</b>) / 분석장비 (<b class="hl"><span class="num" data-to="15">15</span>종</b>)</li>
       </ul>
-      <div class="hub" id="hub">
-        <svg class="wires" id="wires" aria-hidden="true"></svg>
-        <div class="side">
-          <div class="ibox" style="--i:0"><h5>설비운영능력</h5><div>- Compact line 구축<br>- n, p형 단결정 및 다결정 태양전지 제작공정<br>- 고성능 기반기술 확보 (&gt;22%)</div></div>
-          <div class="ibox" style="--i:1"><h5>국가연구안전관리본부 인증기관</h5><div>- 미래창조과학부 안전관리 우수연구실 선정 (2015.11)<br>- 자체안전점검(월별)/소방당국안전점검(분기별)/안전관리본부점검(매년)</div></div>
-        </div>
-        <figure class="photo shine" id="labPhoto" style="--d:5" tabindex="0" data-zoom="assets/lab.webp" data-cap="이해석 교수 Lab. 태양전지 공정 라인"><img src="assets/lab.webp" alt="태양전지 공정 라인 실험실"></figure>
-        <div class="side r">
-          <div class="ibox" style="--i:2"><h5>기반 설비 현황</h5><div>- 약 150 m<sup>2</sup> 규모 6인치 태양전지 라인 보유<br>- Class 10,000 (KS ISO 14644-1 규격 만족)<br>- 2010년 설립 이후 평균 가동률 92%<br>- 국내장비로 시설 구축</div></div>
-          <div class="ibox" style="--i:3"><h5>안전 인프라 구축</h5><div>- 입·출입 안전교육<br>- 국가규격에 적합한 안전인프라 구축 (KS ISO 14644-3)<br>- 자동화안전장치 보유</div></div>
-          <div class="ibox" style="--i:4;flex:.55"><h5>전문관리인력확보</h5><div>- 전문관리업체로부터 분기별 시설 유지보수</div></div>
-          <div class="ibox" style="--i:5;flex:.75"><h5>산학연간 장비연구개발</h5><div>- 국내 태양광 설비 기업의 테스트 거점<br>- 중소기업의 매출 신장</div></div>
-        </div>
-      </div>
-      <div class="eq" id="eq"></div>
+      <figure class="photo mat wipe shine" style="--d:5;flex:1" tabindex="0" data-zoom="assets/s6-lab-a.webp" data-cap="이해석 교수 Lab. 설비 운영 능력 및 기반 설비 현황"><img src="assets/s6-lab-a.webp" alt="연구실 설비 운영 능력, 기반 설비 현황, 안전 인프라 구축 안내와 공정 라인 사진"></figure>
+      <figure class="photo mat wipe shine" style="--d:8;flex:1.05" tabindex="0" data-zoom="assets/s6-lab-b.webp" data-cap="보유 공정·분석 장비"><img src="assets/s6-lab-b.webp" alt="Sputter, Glove box, Spin coater 등 보유 공정·분석 장비 사진 모음"></figure>
     </div>
   </div>
   <span class="pg">6/10</span>
 </section>
 
-<!-- 7 · idea -->
+<!-- 7 · idea — original centre illustration -->
 <section class="slide" data-title="3. 창업 아이디어 · 우주용 p-type 실리콘/Perovskite 탠덤 태양전지" aria-label="7 / 10">
   <header class="hd rv left" style="--d:0"><span class="orb" aria-hidden="true"></span><h2>3. 창업 아이디어</h2><span class="rule"></span></header>
   <p class="sub rv left" style="--d:1">우주용 p-type 실리콘/Perovskite 탠덤 태양전지</p>
@@ -894,22 +866,12 @@ body.idle{cursor:none}
         <span class="now">현재<br>Perovskite/Si<br>전환</span>
       </div>
     </div>
-    <div class="tdm" aria-label="탠덤 구조: 태양광, Perovskite 상부셀(고효율, 밴드갭 조절), 터널 접합층, p-type 실리콘 하부셀(저비용, 양산성)">
-      <div class="sunlbl">태양광</div>
-      <div class="scene"><div class="layer si"></div><div class="layer tj"></div><div class="layer pk"></div></div>
-      <span class="ph b" style="left:36%;--c:#7fb2ff;--pd:0s"></span>
-      <span class="ph r" style="left:43%;--c:#ff6a4a;--pd:.4s"></span>
-      <span class="ph b" style="left:50%;--c:#9fe3ff;--pd:.9s"></span>
-      <span class="ph r" style="left:57%;--c:#ffb04a;--pd:1.3s"></span>
-      <span class="ph b" style="left:64%;--c:#7fb2ff;--pd:1.8s"></span>
-      <span class="ph r" style="left:47%;--c:#ff6a4a;--pd:2.1s"></span>
-      <div class="llabel pk">Perovskite 상부셀<small>(고효율, 밴드갭 조절)</small></div>
-      <div class="tjl">터널<br>접합층</div>
-      <div class="llabel si">p-type 실리콘 하부셀<small>(저비용, 양산성)</small></div>
-      <div class="cmp">
-        <div>기존 우주 태양광<small>(GaAs, 고비용)</small></div>
-        <div class="new">탠덤 태양전지<small>(Perovskite/Si, 저비용, 고효율)</small></div>
-      </div>
+    <div class="center7">
+      <figure class="photo tfig" tabindex="0" data-zoom="assets/s7-tandem.webp" data-cap="우주용 p-type 실리콘/Perovskite 탠덤 태양전지"><img src="assets/s7-tandem.webp" alt="태양광이 Perovskite 상부셀(고효율, 밴드갭 조절)과 터널 접합층을 지나 p-type 실리콘 하부셀(저비용, 양산성)로 흡수되는 탠덤 구조. 기존 우주 태양광(GaAs, 고비용) 대비 탠덤 태양전지(Perovskite/Si, 저비용, 고효율)"></figure>
+      <span class="beam" style="left:30%;--bd:0s" aria-hidden="true"></span>
+      <span class="beam" style="left:46%;--bd:.7s" aria-hidden="true"></span>
+      <span class="beam" style="left:62%;--bd:1.4s" aria-hidden="true"></span>
+      <span class="halo7" aria-hidden="true"></span>
     </div>
     <div class="col">
       <h3>기대 효과</h3>
@@ -1110,43 +1072,34 @@ body.idle{cursor:none}
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const flowMQ = matchMedia('(max-width:700px) and (orientation:portrait)');
   const NS = 'http://www.w3.org/2000/svg';
+  const lb = $('lightbox'), lbBox = $('lbBox');
+
   let cur = -1, autoTimer = null;
 
-  /* ---- equipment wall (slide 6) ---- */
-  const EQ = [['eq01','Sputter'],['eq02','Glove box'],['eq03','Spin coater'],['eq04','CSS chamber'],['eq05','ALD'],['eq06','Evaporator'],['eq-wet','Wet station'],['eq-furnace','Furnace'],['eq-pecvd','PECVD'],['eq-rtp','RTP'],
-    ['eq07','Solar Simulator'],['eq08','Dark IV'],['eq09','QE'],['eq10','UV-vis'],['eq11','MPPT'],['eq12','EIS'],
-    ['eq13','OM'],['eq14','EL'],['eq15','LIT'],['eq16','LeTID'],['eq17','항온항습챔버'],['eq18','EIS'],['eq-qsspc','QSSPC,Suns-V<sub>oc</sub>']];
-  EQ.forEach(([f, n], i) => {
-    const plain = n.replace(/<[^>]+>/g, '');
-    const fig = document.createElement('figure');
-    fig.style.setProperty('--i', i); fig.tabIndex = 0;
-    fig.dataset.zoom = 'assets/' + f + '.webp'; fig.dataset.cap = '<' + plain + '>';
-    fig.innerHTML = '<div class="im"><img src="assets/' + f + '.webp" alt=""></div><figcaption>&lt;' + n + '&gt;</figcaption>';
-    fig.querySelector('img').alt = plain;
-    $('eq').appendChild(fig);
-  });
-
-  /* ---- animated connector wires: info boxes -> lab photo ---- */
-  function drawWires(){
-    const hub = $('hub'), svg = $('wires'), ph = $('labPhoto');
-    const hb = hub.getBoundingClientRect(), pb = ph.getBoundingClientRect();
-    if (!hb.width) return;
-    const sc = hb.width / hub.offsetWidth;
-    const W = hub.offsetWidth, H = hub.offsetHeight;
-    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.innerHTML = '';
-    const px = r => ({ l: (r.left - hb.left) / sc, r: (r.right - hb.left) / sc, t: (r.top - hb.top) / sc, b: (r.bottom - hb.top) / sc });
-    const P = px(pb);
-    hub.querySelectorAll('.ibox').forEach((bx, k) => {
-      const B = px(bx.getBoundingClientRect()), left = !bx.closest('.side.r');
-      const y = (B.t + B.b) / 2, x0 = left ? B.r : B.l;
-      const tx = left ? P.l + 26 + (k % 2) * 30 : P.r - 26 - (k % 2) * 24, ty = P.t + 30 + ((k * 53) % (P.b - P.t - 60));
-      const p = document.createElementNS(NS, 'path');
-      const mx = (x0 + tx) / 2;
-      p.setAttribute('d', `M${x0} ${y} C ${mx} ${y}, ${mx} ${ty}, ${tx} ${ty}`);
-      const c = document.createElementNS(NS, 'circle'); c.setAttribute('cx', tx); c.setAttribute('cy', ty); c.setAttribute('r', 3.5);
-      svg.append(p, c);
-    });
+  /* ---- slide 5: spotlight tour over the original infographic + quadrant zoom ---- */
+  const QUADS = [...document.querySelectorAll('.s-outlook .hot')];
+  const spot = $('spot'); let spotT = null, spotK = 0, spotHold = false;
+  function placeSpot(h){ ['left','top','width','height'].forEach(k => spot.style[k] = h.style[k]); spot.classList.add('show'); }
+  function tour(on){
+    clearInterval(spotT); clearTimeout(tour.t); spot.classList.remove('show');
+    if (!on || reduce) return;
+    spotK = 0;
+    tour.t = setTimeout(() => { placeSpot(QUADS[0]); spotT = setInterval(() => { if (spotHold) return; spotK = (spotK + 1) % (QUADS.length + 1); if (spotK === QUADS.length) spot.classList.remove('show'); else placeSpot(QUADS[spotK]); }, 2600); }, 2600);
   }
+  QUADS.forEach(h => {
+    h.addEventListener('mouseenter', () => { spotHold = true; placeSpot(h); });
+    h.addEventListener('mouseleave', () => { spotHold = false; });
+    h.addEventListener('click', e => {
+      e.stopPropagation();
+      const L = parseFloat(h.style.left), T = parseFloat(h.style.top), Wd = parseFloat(h.style.width), Ht = parseFloat(h.style.height);
+      const d = document.createElement('div'); d.className = 'quad';
+      d.style.backgroundImage = 'url(assets/s5-outlook.webp)';
+      d.style.backgroundSize = (10000 / Wd) + '% auto';
+      d.style.backgroundPosition = (L / (100 - Wd) * 100) + '% ' + (T / (100 - Ht) * 100) + '%';
+      d.style.aspectRatio = String((Wd * 1669) / (Ht * 937));
+      lbBox.innerHTML = ''; lbBox.appendChild(d); lb.hidden = false; $('lbClose').focus();
+    });
+  });
 
   /* ---- solar-cell lattice (slide 8 radiation) ---- */
   const lat = $('lattice');
@@ -1191,7 +1144,7 @@ body.idle{cursor:none}
     else stage.style.setProperty('--s', Math.max(.15, Math.min(innerWidth / 1600, innerHeight / 900) * .985).toFixed(4));
     afterLayout();
   }
-  function afterLayout(){ requestAnimationFrame(() => { if (cur === 5) drawWires(); if (cur === 7) layoutStack(); }); }
+  function afterLayout(){ requestAnimationFrame(() => { if (cur === 7) layoutStack(); }); }
   addEventListener('resize', fit);
   if (flowMQ.addEventListener) flowMQ.addEventListener('change', fit);
   document.addEventListener('fullscreenchange', () => setTimeout(fit, 80));
@@ -1229,7 +1182,7 @@ body.idle{cursor:none}
     const sl = slides[i];
     void sl.offsetWidth; sl.classList.add('on'); sl.scrollTop = 0;
     cycleHL(i === 7);
-    afterLayout(); if (i === 5) setTimeout(drawWires, 1700);
+    afterLayout(); tour(i === 4);
     countUp(sl);
     $('cur').textContent = i + 1;
     $('prog').firstElementChild.style.width = ((i + 1) / total * 100) + '%';
@@ -1264,7 +1217,6 @@ body.idle{cursor:none}
   $('fsBtn').onclick = () => { try { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {}); } catch (e) {} };
 
   /* ---- lightbox for photos ---- */
-  const lb = $('lightbox'), lbBox = $('lbBox');
   function openImg(src, cap){ lbBox.innerHTML = ''; const im = new Image(); im.src = src; im.alt = cap || ''; lbBox.appendChild(im); if (cap) { const c = document.createElement('div'); c.className = 'cap2'; c.textContent = cap; lbBox.appendChild(c); } lb.hidden = false; $('lbClose').focus(); }
   lb.addEventListener('click', () => { lb.hidden = true; });
   document.addEventListener('click', e => { const f = e.target.closest('[data-zoom]'); if (f) openImg(f.dataset.zoom, f.dataset.cap); });
