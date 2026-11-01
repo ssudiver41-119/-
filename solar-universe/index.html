@@ -428,9 +428,9 @@ b.hc{color:var(--photon);font-weight:700}
 @keyframes settle{from{transform:scale(1.12)}to{transform:none}}
 
 
-.eqfig{display:grid;place-items:center}
+.eqfig{display:flex;justify-content:center;align-items:stretch}
 .eqfig:hover img{transform:none}
-.eqmap{position:relative;height:100%;aspect-ratio:1584/667;max-width:100%}
+.eqmap{position:relative;height:100%;aspect-ratio:1584/667;max-width:100%;flex:none}
 .eqmap > img{width:100%;height:100%;object-fit:contain;display:block}
 .eqhot{position:absolute;padding:0;border:0;border-radius:4px;background:transparent;cursor:zoom-in;transition:box-shadow .25s,background .25s,transform .25s}
 .eqhot span{position:absolute;left:50%;bottom:calc(100% + 4px);transform:translate(-50%,4px);white-space:nowrap;padding:2px 8px;border-radius:6px;background:#0c1530;color:#fff;font:600 12px var(--font-body);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:3}
@@ -843,12 +843,30 @@ body.idle{cursor:none}
         <li><span class="flag">美</span><span>美) 테슬라 社, 태양광 모듈 <b class="hl">100GW</b> 양산 확보 계획 (’29, <b class="hl">14조원</b> 규모)</span></li>
         <li><span class="flag">美</span><span>美) Space X 社, 스타링크 V3 활용 궤도 데이터센터 구축 계획</span></li>
       </ul>
-      <figure class="photo mat wipe shine" style="--d:4;flex:1.75" tabindex="0" data-zoom="assets/s6-market-a.webp" data-cap="미국 태양광·스페이스X 관련 기사 (자료: SpaceX)"><img src="assets/s6-market-a.webp" alt="스타링크 V1.5·V2·V3 위성 이미지와 테슬라·스페이스X 태양전지 관련 기사"></figure>
+      <div class="feed">
+        <article class="nc text-only rv flip" style="--d:4">
+          <div class="big"><span class="num" data-to="100">100</span>GW</div>
+          <div class="tx"><span class="hl2">테슬라, 美 태양전지 생산 100GW 목표...뉴욕·애리조나·아이다호 공장 검토</span></div>
+        </article>
+        <article class="nc rv flip" style="--d:5">
+          <figure class="th photo" tabindex="0" data-zoom="assets/starlink.webp" data-cap="자료: SpaceX"><img src="assets/starlink.webp" alt="스타링크 V1.5, V2, V3 위성"><span class="tag">자료: SpaceX</span></figure>
+          <div class="tx"><span class="src"><b>서울경제</b> 김기혁 기자 · 2026-06-13 14:00</span><span class="hl2">스페이스X, 우주 AIDC 속도...태양전지 확보 주력</span></div>
+        </article>
+      </div>
       <ul class="news">
         <li><span class="flag">韓</span><span>韓) 플렉셀스페이스 社, 우주용 태양광 시리즈A 투자유치 (‘26.07 <b class="hl">250억</b>)</span></li>
         <li><span class="flag">中</span><span>中) JA Solar 社, p-type HJT 태양광 모듈 우주 환경 실증 (’26.09)</span></li>
       </ul>
-      <figure class="photo mat wipe shine" style="--d:7;flex:1" tabindex="0" data-zoom="assets/s6-market-b.webp" data-cap="플렉셀스페이스·JA Solar 관련 기사"><img src="assets/s6-market-b.webp" alt="플렉셀스페이스 시리즈A 투자 유치 및 JA Solar P-type HJT 모듈 우주 실증 기사"></figure>
+      <div class="feed">
+        <article class="nc rv flip" style="--d:7">
+          <figure class="th photo" tabindex="0" data-zoom="assets/blueshell.webp" data-cap="BLUESHELL"><img src="assets/blueshell.webp" alt="플렉셀스페이스 BLUESHELL 모듈"></figure>
+          <div class="tx"><span class="hl2">플렉셀스페이스, 시리즈A 250억 투자 유치…우주태양전지 상용화 속도</span></div>
+        </article>
+        <article class="nc rv flip" style="--d:8">
+          <figure class="th photo" tabindex="0" data-zoom="assets/hjt.webp" data-cap="P-Type HJT Modules Head To Orbit In First In-Space Test"><img src="assets/hjt.webp" alt="로켓 발사와 궤도 위 태양광 모듈"><span class="ov">P-Type HJT Modules<em>Head To Orbit In First In-Space Test</em></span></figure>
+          <div class="tx"><span class="src"><span class="hn">HEADLINE NEWS</span> GBA · October 6, 2026</span><span class="hl2">JA Solar P HJT modules enter orbit for space validation</span></div>
+        </article>
+      </div>
     </div>
     <div class="panel s6p rv right" style="--d:3">
       <p class="ptitle">창업 실현 가능성</p>
@@ -856,8 +874,8 @@ body.idle{cursor:none}
         <li>이해석 교수 Lab. 보유 인프라 활용, 초기 R&amp;D 비용 최소화</li>
         <li>실리콘/페로브스카이트 태양전지 제작 공정 및 분석 장비 활용<br><b class="hc"><span class="num" data-to="150">150</span>m<sup>2</sup></b> 규모, 공정장비 (<b class="hl"><span class="num" data-to="11">11</span>종</b>) / 분석장비 (<b class="hl"><span class="num" data-to="15">15</span>종</b>)</li>
       </ul>
-      <figure class="photo mat wipe shine" style="--d:5;flex:1" tabindex="0" data-zoom="assets/s6-lab-a.webp" data-cap="이해석 교수 Lab. 설비 운영 능력 및 기반 설비 현황"><img src="assets/s6-lab-a.webp" alt="연구실 설비 운영 능력, 기반 설비 현황, 안전 인프라 구축 안내와 공정 라인 사진"></figure>
-      <figure class="photo mat wipe eqfig" style="--d:8;flex:1.05;cursor:default">
+      <figure class="photo mat wipe shine" style="--d:5;flex:.9" tabindex="0" data-zoom="assets/s6-lab-a.webp" data-cap="이해석 교수 Lab. 설비 운영 능력 및 기반 설비 현황"><img src="assets/s6-lab-a.webp" alt="연구실 설비 운영 능력, 기반 설비 현황, 안전 인프라 구축 안내와 공정 라인 사진"></figure>
+      <figure class="photo mat wipe eqfig" style="--d:8;flex:1.15;cursor:default">
         <div class="eqmap">
           <img src="assets/s6-lab-b.webp" alt="Sputter, Glove box, Spin coater 등 보유 공정·분석 장비 사진 모음 — 사진을 누르면 장비별로 크게 볼 수 있습니다">
           <button type="button" class="eqhot" style="left:1.14%;top:1.80%;width:11.17%;height:27.29%;--i:0" data-zoom="assets/eq01.webp" data-cap="&lt;Sputter&gt;" aria-label="Sputter 사진 크게 보기"><span>Sputter</span></button>
