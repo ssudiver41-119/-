@@ -427,6 +427,18 @@ b.hc{color:var(--photon);font-weight:700}
 .on .wipe img{animation:settle 1.6s cubic-bezier(.16,.84,.24,1) both;animation-delay:calc(var(--d,0) * 110ms + 350ms)}
 @keyframes settle{from{transform:scale(1.12)}to{transform:none}}
 
+
+.eqfig{display:grid;place-items:center}
+.eqfig:hover img{transform:none}
+.eqmap{position:relative;height:100%;aspect-ratio:1584/667;max-width:100%}
+.eqmap > img{width:100%;height:100%;object-fit:contain;display:block}
+.eqhot{position:absolute;padding:0;border:0;border-radius:4px;background:transparent;cursor:zoom-in;transition:box-shadow .25s,background .25s,transform .25s}
+.eqhot span{position:absolute;left:50%;bottom:calc(100% + 4px);transform:translate(-50%,4px);white-space:nowrap;padding:2px 8px;border-radius:6px;background:#0c1530;color:#fff;font:600 12px var(--font-body);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:3}
+.eqhot:hover,.eqhot:focus-visible{outline:none;background:rgba(92,200,255,.12);box-shadow:0 0 0 2px var(--photon),0 0 18px rgba(92,200,255,.7);transform:scale(1.06);z-index:2}
+.eqhot:hover span,.eqhot:focus-visible span{opacity:1;transform:translate(-50%,0)}
+.on .eqhot{animation:eqPing .9s ease-out both;animation-delay:calc(var(--i) * 60ms + 1700ms)}
+@keyframes eqPing{0%{box-shadow:0 0 0 0 rgba(92,200,255,0)}40%{box-shadow:0 0 0 2px var(--photon),0 0 16px rgba(92,200,255,.8)}100%{box-shadow:0 0 0 0 rgba(92,200,255,0)}}
+
 /* ===== 7 · original centre illustration ===== */
 .center7{position:relative;border-radius:16px;overflow:hidden;min-height:0}
 .tfig{position:absolute;inset:0;border-radius:16px;background:#0b1636}
@@ -547,6 +559,7 @@ body.idle{cursor:none}
 .lightbox{position:fixed;inset:0;z-index:9;background:rgba(3,6,14,.92);display:grid;place-items:center;padding:24px max(16px,env(safe-area-inset-right,0px)) 24px max(16px,env(safe-area-inset-left,0px));cursor:zoom-out}
 .lightbox .box{max-width:min(1500px,96vw);max-height:90vh;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 30px 100px rgba(0,0,0,.7);animation:pop .4s cubic-bezier(.16,.84,.24,1)}
 .lightbox img{display:block;max-width:100%;max-height:84vh;object-fit:contain;margin:0 auto}
+.lightbox img.sm{height:min(64vh,620px);width:auto;max-width:90vw}
 .lightbox .cap2{padding:8px 14px;background:#0c1530;color:var(--ink);font-size:14px}
 .lightbox .close{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px));font:600 14px var(--font-body);color:var(--ink);background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:8px 14px;cursor:pointer}
 .hint{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:4;font-size:13px;color:var(--muted);background:rgba(10,18,42,.85);border:1px solid var(--line);border-radius:999px;padding:6px 14px;transition:opacity .6s;pointer-events:none;white-space:nowrap}
@@ -844,7 +857,34 @@ body.idle{cursor:none}
         <li>실리콘/페로브스카이트 태양전지 제작 공정 및 분석 장비 활용<br><b class="hc"><span class="num" data-to="150">150</span>m<sup>2</sup></b> 규모, 공정장비 (<b class="hl"><span class="num" data-to="11">11</span>종</b>) / 분석장비 (<b class="hl"><span class="num" data-to="15">15</span>종</b>)</li>
       </ul>
       <figure class="photo mat wipe shine" style="--d:5;flex:1" tabindex="0" data-zoom="assets/s6-lab-a.webp" data-cap="이해석 교수 Lab. 설비 운영 능력 및 기반 설비 현황"><img src="assets/s6-lab-a.webp" alt="연구실 설비 운영 능력, 기반 설비 현황, 안전 인프라 구축 안내와 공정 라인 사진"></figure>
-      <figure class="photo mat wipe shine" style="--d:8;flex:1.05" tabindex="0" data-zoom="assets/s6-lab-b.webp" data-cap="보유 공정·분석 장비"><img src="assets/s6-lab-b.webp" alt="Sputter, Glove box, Spin coater 등 보유 공정·분석 장비 사진 모음"></figure>
+      <figure class="photo mat wipe eqfig" style="--d:8;flex:1.05;cursor:default">
+        <div class="eqmap">
+          <img src="assets/s6-lab-b.webp" alt="Sputter, Glove box, Spin coater 등 보유 공정·분석 장비 사진 모음 — 사진을 누르면 장비별로 크게 볼 수 있습니다">
+          <button type="button" class="eqhot" style="left:1.14%;top:1.80%;width:11.17%;height:27.29%;--i:0" data-zoom="assets/eq01.webp" data-cap="&lt;Sputter&gt;" aria-label="Sputter 사진 크게 보기"><span>Sputter</span></button>
+          <button type="button" class="eqhot" style="left:13.01%;top:1.80%;width:11.11%;height:27.29%;--i:1" data-zoom="assets/eq02.webp" data-cap="&lt;Glove box&gt;" aria-label="Glove box 사진 크게 보기"><span>Glove box</span></button>
+          <button type="button" class="eqhot" style="left:24.87%;top:1.80%;width:11.11%;height:27.29%;--i:2" data-zoom="assets/eq03.webp" data-cap="&lt;Spin coater&gt;" aria-label="Spin coater 사진 크게 보기"><span>Spin coater</span></button>
+          <button type="button" class="eqhot" style="left:36.68%;top:1.80%;width:11.17%;height:27.29%;--i:3" data-zoom="assets/eq04.webp" data-cap="&lt;CSS chamber&gt;" aria-label="CSS chamber 사진 크게 보기"><span>CSS chamber</span></button>
+          <button type="button" class="eqhot" style="left:48.48%;top:1.80%;width:11.17%;height:27.29%;--i:4" data-zoom="assets/eq05.webp" data-cap="&lt;ALD&gt;" aria-label="ALD 사진 크게 보기"><span>ALD</span></button>
+          <button type="button" class="eqhot" style="left:60.16%;top:1.80%;width:11.17%;height:27.29%;--i:5" data-zoom="assets/eq06.webp" data-cap="&lt;Evaporator&gt;" aria-label="Evaporator 사진 크게 보기"><span>Evaporator</span></button>
+          <button type="button" class="eqhot" style="left:72.54%;top:1.80%;width:12.94%;height:27.29%;--i:6" data-zoom="assets/eq-wet.webp" data-cap="&lt;Wet station&gt;" aria-label="Wet station 사진 크게 보기"><span>Wet station</span></button>
+          <button type="button" class="eqhot" style="left:85.73%;top:1.80%;width:13.01%;height:27.29%;--i:7" data-zoom="assets/eq-furnace.webp" data-cap="&lt;Furnace&gt;" aria-label="Furnace 사진 크게 보기"><span>Furnace</span></button>
+          <button type="button" class="eqhot" style="left:1.14%;top:33.43%;width:11.17%;height:27.89%;--i:8" data-zoom="assets/eq07.webp" data-cap="&lt;Solar Simulator&gt;" aria-label="Solar Simulator 사진 크게 보기"><span>Solar Simulator</span></button>
+          <button type="button" class="eqhot" style="left:13.01%;top:33.43%;width:11.11%;height:27.89%;--i:9" data-zoom="assets/eq08.webp" data-cap="&lt;Dark IV&gt;" aria-label="Dark IV 사진 크게 보기"><span>Dark IV</span></button>
+          <button type="button" class="eqhot" style="left:24.87%;top:33.43%;width:11.11%;height:27.89%;--i:10" data-zoom="assets/eq09.webp" data-cap="&lt;QE&gt;" aria-label="QE 사진 크게 보기"><span>QE</span></button>
+          <button type="button" class="eqhot" style="left:36.68%;top:33.43%;width:11.17%;height:27.89%;--i:11" data-zoom="assets/eq10.webp" data-cap="&lt;UV-vis&gt;" aria-label="UV-vis 사진 크게 보기"><span>UV-vis</span></button>
+          <button type="button" class="eqhot" style="left:48.48%;top:33.43%;width:11.17%;height:27.89%;--i:12" data-zoom="assets/eq11.webp" data-cap="&lt;MPPT&gt;" aria-label="MPPT 사진 크게 보기"><span>MPPT</span></button>
+          <button type="button" class="eqhot" style="left:60.16%;top:33.43%;width:11.17%;height:27.89%;--i:13" data-zoom="assets/eq12.webp" data-cap="&lt;EIS&gt;" aria-label="EIS 사진 크게 보기"><span>EIS</span></button>
+          <button type="button" class="eqhot" style="left:72.66%;top:33.43%;width:13.07%;height:27.89%;--i:14" data-zoom="assets/eq-pecvd.webp" data-cap="&lt;PECVD&gt;" aria-label="PECVD 사진 크게 보기"><span>PECVD</span></button>
+          <button type="button" class="eqhot" style="left:85.80%;top:33.43%;width:13.01%;height:27.89%;--i:15" data-zoom="assets/eq-rtp.webp" data-cap="&lt;RTP&gt;" aria-label="RTP 사진 크게 보기"><span>RTP</span></button>
+          <button type="button" class="eqhot" style="left:1.20%;top:65.97%;width:10.54%;height:26.69%;--i:16" data-zoom="assets/eq13.webp" data-cap="&lt;OM&gt;" aria-label="OM 사진 크게 보기"><span>OM</span></button>
+          <button type="button" class="eqhot" style="left:13.01%;top:65.97%;width:11.11%;height:26.69%;--i:17" data-zoom="assets/eq14.webp" data-cap="&lt;EL&gt;" aria-label="EL 사진 크게 보기"><span>EL</span></button>
+          <button type="button" class="eqhot" style="left:24.87%;top:65.97%;width:11.11%;height:26.69%;--i:18" data-zoom="assets/eq15.webp" data-cap="&lt;LIT&gt;" aria-label="LIT 사진 크게 보기"><span>LIT</span></button>
+          <button type="button" class="eqhot" style="left:36.68%;top:65.97%;width:11.17%;height:26.69%;--i:19" data-zoom="assets/eq16.webp" data-cap="&lt;LeTID&gt;" aria-label="LeTID 사진 크게 보기"><span>LeTID</span></button>
+          <button type="button" class="eqhot" style="left:48.48%;top:65.97%;width:11.17%;height:26.69%;--i:20" data-zoom="assets/eq17.webp" data-cap="&lt;항온항습챔버&gt;" aria-label="항온항습챔버 사진 크게 보기"><span>항온항습챔버</span></button>
+          <button type="button" class="eqhot" style="left:60.16%;top:65.97%;width:11.17%;height:26.69%;--i:21" data-zoom="assets/eq18.webp" data-cap="&lt;EIS&gt;" aria-label="EIS 사진 크게 보기"><span>EIS</span></button>
+          <button type="button" class="eqhot" style="left:77.65%;top:65.97%;width:17.11%;height:26.69%;--i:22" data-zoom="assets/eq-qsspc.webp" data-cap="&lt;QSSPC,Suns-Voc&gt;" aria-label="QSSPC,Suns-Voc 사진 크게 보기"><span>QSSPC,Suns-Voc</span></button>
+        </div>
+      </figure>
     </div>
   </div>
   <span class="pg">6/10</span>
@@ -1217,10 +1257,10 @@ body.idle{cursor:none}
   $('fsBtn').onclick = () => { try { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(() => {}); } catch (e) {} };
 
   /* ---- lightbox for photos ---- */
-  function openImg(src, cap){ lbBox.innerHTML = ''; const im = new Image(); im.src = src; im.alt = cap || ''; lbBox.appendChild(im); if (cap) { const c = document.createElement('div'); c.className = 'cap2'; c.textContent = cap; lbBox.appendChild(c); } lb.hidden = false; $('lbClose').focus(); }
+  function openImg(src, cap, small){ lbBox.innerHTML = ''; const im = new Image(); im.src = src; im.alt = cap || ''; if (small) im.className = 'sm'; lbBox.appendChild(im); if (cap) { const c = document.createElement('div'); c.className = 'cap2'; c.textContent = cap; lbBox.appendChild(c); } lb.hidden = false; $('lbClose').focus(); }
   lb.addEventListener('click', () => { lb.hidden = true; });
-  document.addEventListener('click', e => { const f = e.target.closest('[data-zoom]'); if (f) openImg(f.dataset.zoom, f.dataset.cap); });
-  document.addEventListener('keydown', e => { const f = e.target.closest && e.target.closest('[data-zoom]'); if (f && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.stopPropagation(); openImg(f.dataset.zoom, f.dataset.cap); } }, true);
+  document.addEventListener('click', e => { const f = e.target.closest('[data-zoom]'); if (f) openImg(f.dataset.zoom, f.dataset.cap, f.classList.contains('eqhot')); });
+  document.addEventListener('keydown', e => { const f = e.target.closest && e.target.closest('[data-zoom]'); if (f && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); e.stopPropagation(); openImg(f.dataset.zoom, f.dataset.cap, f.classList.contains('eqhot')); } }, true);
   document.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => go(+b.dataset.go - 1)));
 
   /* ---- keyboard / swipe / wheel ---- */
